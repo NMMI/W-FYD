@@ -1,0 +1,620 @@
+C51 COMPILER V9.51   MAIN                                                                  10/12/2016 16:01:22 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\main.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\main.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(2) PR(.\DP8051_Keil_9
+                    -51\Release/main.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\main.obj)
+
+line level    source
+
+*** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
+   1          // ----------------------------------------------------------------------------
+   2          // Copyright (C)  qbrobotics. All rights reserved.
+   3          // www.qbrobotics.com
+   4          // ----------------------------------------------------------------------------
+   5          
+   6          /**
+   7          * \file         main.c
+   8          *
+   9          * \brief        Firmware main file.
+  10          * \date         Dic. 1, 2015
+  11          * \author       qbrobotics
+  12          * \copyright    (C)  qbrobotics. All rights reserved.
+  13          */
+  14          
+  15          /**
+  16          * \mainpage     Firmware
+  17          * \brief        This is the firmware of the qb move.
+  18          * \version      0.1 beta 4
+  19          *
+  20          * \author       _qbrobotics_
+  21          *
+  22          * \date         Dic. 1, 2015
+  23          *
+  24          * \details      This is the firmware of the qb move.
+  25          *
+  26          * \copyright    (C)  qbrobotics. All rights reserved.
+  27          *
+  28          */
+  29          
+  30          // ----------------------------------------------------------------------------
+  31          // This version changes:
+  32          //      - not reported
+  33          
+  34          
+  35          //=================================================================     includes
+  36          
+  37          #include <device.h>
+  38          #include <globals.h> // ALL GLOBAL DEFINITIONS, STRUCTURES AND MACROS HERE
+  39          #include <interruptions.h>
+  40          #include <command_processing.h>
+  41          
+  42          //==============================================================================
+  43          //                                                                 MAIN FUNCTION
+  44          //==============================================================================
+  45          
+  46          int main() {
+  47   1          
+  48   1          // Iterator
+  49   1          uint8 i;         
+  50   1          
+  51   1          // Variable declarations for DMA 
+  52   1          
+C51 COMPILER V9.51   MAIN                                                                  10/12/2016 16:01:22 PAGE 2   
+
+  53   1          uint8 DMA_Chan;
+  54   1          uint8 DMA_TD[1];
+  55   1      
+  56   1          //================================     initializations - psoc and components
+  57   1      
+  58   1          // EEPROM
+  59   1      
+  60   1          EEPROM_Start();
+  61   1          memRecall();                                        // recall configuration
+  62   1      
+  63   1          // FTDI chip enable
+  64   1      
+  65   1          CyDelay(100);
+  66   1          FTDI_ENABLE_REG_Write(0x01);
+  67   1          
+  68   1          // RS485
+  69   1      
+  70   1          UART_RS485_Stop();                                  // stop UART
+  71   1          UART_RS485_Start();                                 // start UART
+  72   1          UART_RS485_Init();
+  73   1      
+  74   1          UART_RS485_ClearRxBuffer();
+  75   1          UART_RS485_ClearTxBuffer();
+  76   1      
+  77   1          ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);     // RS485 isr function
+  78   1          
+  79   1          // WATCHDOG
+  80   1          
+  81   1          WATCHDOG_COUNTER_Start();
+  82   1          
+  83   1          ISR_WATCHDOG_StartEx(ISR_WATCHDOG_Handler);         // WATCHDOG isr function    
+  84   1      
+  85   1          // PWM
+  86   1      
+  87   1          PWM_MOTORS_Start();
+  88   1          PWM_1_Start();
+  89   1          PWM_MOTORS_WriteCompare1(0);
+  90   1          PWM_MOTORS_WriteCompare2(0);
+  91   1          MOTOR_DIR_Write(0);
+  92   1          MOTOR_ON_OFF_Write(0x00);
+  93   1      
+  94   1      
+  95   1          // SSI encoder initializations
+  96   1      
+  97   1          COUNTER_ENC_Start();
+  98   1          SHIFTREG_ENC_1_Start();
+  99   1          SHIFTREG_ENC_2_Start();
+ 100   1      
+ 101   1      
+ 102   1          // ADC
+ 103   1      
+ 104   1          ADC_Start();                                        // start ADC
+ 105   1          ADC_SOC_Write(0x01);                                // Force first read cycle
+ 106   1         
+ 107   1          // DMA
+ 108   1          DMA_Chan = DMA_DmaInitialize(DMA_BYTES_PER_BURST, DMA_REQUEST_PER_BURST, HI16(DMA_SRC_BASE), HI16(DMA_
+             -DST_BASE));
+ 109   1          DMA_TD[0] = CyDmaTdAllocate();                                                                        
+             -  // Allocate TD
+ 110   1          CyDmaTdSetConfiguration(DMA_TD[0], 2 * 5, DMA_TD[0], TD_SWAP_EN | DMA__TD_TERMOUT_EN | TD_INC_DST_ADR)
+             -; // DMA Configurations
+ 111   1          CyDmaTdSetAddress(DMA_TD[0], LO16((uint32)ADC_DEC_SAMP_PTR), LO16((uint32)ADC_buf));                  
+C51 COMPILER V9.51   MAIN                                                                  10/12/2016 16:01:22 PAGE 3   
+
+             -  // Set Register Address
+ 112   1          CyDmaChSetInitialTd(DMA_Chan, DMA_TD[0]);                                                             
+             -  // Initialize Channel
+ 113   1          
+ 114   1          CyDmaChEnable(DMA_Chan, 1);                                                                           
+             -  // Enable DMA
+ 115   1      
+ 116   1          RS485_CTS_Write(0);                                 // Clear To Send on RS485
+ 117   1      
+ 118   1          // TIMER
+ 119   1      
+ 120   1          MY_TIMER_Start();           
+ 121   1          PACER_TIMER_Start();
+ 122   1      
+ 123   1          CYGlobalIntEnable;                                  // enable interrupts
+ 124   1      
+ 125   1          //====================================     initializations - clean variables
+ 126   1      
+ 127   1          CyDelay(10);                                        // Wait for encoders to have a valid value
+ 128   1      
+ 129   1          //---------------------------------------------------  Initialize referiment structure
+ 130   1          for (i = NUM_OF_MOTORS; i--;) 
+ 131   1              g_ref.pos[i] = 0;
+ 132   1      
+ 133   1          //---------------------------------------------------  Initialize measurement structure
+ 134   1          for (i = NUM_OF_SENSORS; i--;) { 
+ 135   2              g_meas.pos[i] = 0;
+ 136   2              g_meas.rot[i] = 0;
+ 137   2          }
+ 138   1         
+ 139   1          g_refNew = g_ref;                                   // Initialize k+1 measurements structure
+ 140   1      
+ 141   1          g_ref.onoff = c_mem.activ;                          // Initalize Activation
+ 142   1      
+ 143   1          //------------------------------------------------- Initialize packge on receive from RS485
+ 144   1          g_rx.length = 0;
+ 145   1          g_rx.ready  = 0;
+ 146   1      
+ 147   1           // Zero position initialization for cuff device
+ 148   1      /*    g_mem.m_off[0] = g_mem.m_off[1] = 0;
+ 149   1          if ( memStore(0) )
+ 150   1              sendAcknowledgment(ACK_OK);
+ 151   1          else
+ 152   1              sendAcknowledgment(ACK_ERROR);
+ 153   1      
+ 154   1          for (i = 0; i< NUM_OF_SENSORS; i++) {
+ 155   1              encoder_reading(i, TRUE);
+ 156   1              g_mem.m_off[i] = g_meas.pos[i];
+ 157   1          }
+ 158   1      */
+ 159   1          if ( memStore(0) )
+ 160   1              sendAcknowledgment(ACK_OK);
+ 161   1          else
+ 162   1              sendAcknowledgment(ACK_ERROR);
+ 163   1      
+ 164   1          MOTOR_ON_OFF_Write(g_ref.onoff);                    // Activating motors
+ 165   1          
+ 166   1          dev_pwm_limit = 0;                                  // Init PWM limit
+ 167   1          tension_valid = FALSE;                              // Init tension_valid BIT
+ 168   1      
+ 169   1          calibration_flag = STOP;
+ 170   1          reset_last_value_flag = 0;
+C51 COMPILER V9.51   MAIN                                                                  10/12/2016 16:01:22 PAGE 4   
+
+ 171   1          
+ 172   1          //------------------------------------------------- Initialize WDT
+ 173   1          // Check on disable WTD on startup
+ 174   1          if (g_mem.watchdog_period == 0) 
+ 175   1              WATCHDOG_ENABLER_Write(1);                      // Disabled
+ 176   1          else
+ 177   1              WATCHDOG_ENABLER_Write(0);                      // Enabled
+ 178   1              
+ 179   1          //============================================================     main loop
+ 180   1      
+ 181   1          for(;;)
+ 182   1          {
+ 183   2              // Put the FF reset pin to LOW
+ 184   2              RESET_FF_Write(0x00);
+ 185   2      
+ 186   2              // Call function scheduler
+ 187   2              function_scheduler();
+ 188   2      
+ 189   2              //  Wait until the FF is set to 1
+ 190   2              while(FF_STATUS_Read() == 0){
+ 191   3                  // On interrupt from RS485
+ 192   3                  if (interrupt_flag){
+ 193   4                      // Reset WDT
+ 194   4                      WATCHDOG_REFRESH_Write(0x01);
+ 195   4                      // Reset flags
+ 196   4                      interrupt_flag = FALSE;
+ 197   4                      watchdog_flag = FALSE;
+ 198   4                      // Manage Interrupt on rs485
+ 199   4                      interrupt_manager();
+ 200   4                  }
+ 201   3                  // On interrupt from WDT
+ 202   3                  else { 
+ 203   4                      if (watchdog_flag){
+ 204   5                          // Reset WDT
+ 205   5                          WATCHDOG_REFRESH_Write(0x01);
+ 206   5                          // Disactivate motors
+ 207   5                          g_refNew.onoff = 0x00;
+ 208   5                      }
+ 209   4                  }
+ 210   3              };
+ 211   2      
+ 212   2              // Command a FF reset
+ 213   2              RESET_FF_Write(0x01);
+ 214   2      
+ 215   2              // Wait for FF to be reset
+ 216   2              while(FF_STATUS_Read() == 1);
+ 217   2      
+ 218   2              if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)
+ 219   2                  UART_RS485_ClearRxBuffer();
+ 220   2          }
+ 221   1          return 0;
+ 222   1      }
+ 223          
+ 224          /* [] END OF FILE */
+C51 COMPILER V9.51   MAIN                                                                  10/12/2016 16:01:22 PAGE 5   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 46
+                                           ; SOURCE LINE # 60
+0000 120000      E     LCALL   EEPROM_Start
+                                           ; SOURCE LINE # 61
+0003 120000      E     LCALL   memRecall
+                                           ; SOURCE LINE # 65
+0006 E4                CLR     A
+0007 7F64              MOV     R7,#064H
+0009 FE                MOV     R6,A
+000A FD                MOV     R5,A
+000B FC                MOV     R4,A
+000C 120000      E     LCALL   _?CyDelay
+                                           ; SOURCE LINE # 66
+000F 7F01              MOV     R7,#01H
+0011 120000      E     LCALL   _FTDI_ENABLE_REG_Write
+                                           ; SOURCE LINE # 70
+0014 120000      E     LCALL   UART_RS485_Stop
+                                           ; SOURCE LINE # 71
+0017 120000      E     LCALL   UART_RS485_Start
+                                           ; SOURCE LINE # 72
+001A 120000      E     LCALL   UART_RS485_Init
+                                           ; SOURCE LINE # 74
+001D 120000      E     LCALL   UART_RS485_ClearRxBuffer
+                                           ; SOURCE LINE # 75
+0020 120000      E     LCALL   UART_RS485_ClearTxBuffer
+                                           ; SOURCE LINE # 77
+0023 7E00        E     MOV     R6,#HIGH ISR_RS485_RX_ExInterrupt
+0025 7F00        E     MOV     R7,#LOW ISR_RS485_RX_ExInterrupt
+0027 120000      E     LCALL   _ISR_RS485_RX_StartEx
+                                           ; SOURCE LINE # 81
+002A 120000      E     LCALL   WATCHDOG_COUNTER_Start
+                                           ; SOURCE LINE # 83
+002D 7E00        E     MOV     R6,#HIGH ISR_WATCHDOG_Handler
+002F 7F00        E     MOV     R7,#LOW ISR_WATCHDOG_Handler
+0031 120000      E     LCALL   _ISR_WATCHDOG_StartEx
+                                           ; SOURCE LINE # 87
+0034 120000      E     LCALL   PWM_MOTORS_Start
+                                           ; SOURCE LINE # 88
+0037 120000      E     LCALL   PWM_1_Start
+                                           ; SOURCE LINE # 89
+003A E4                CLR     A
+003B FF                MOV     R7,A
+003C 120000      E     LCALL   _PWM_MOTORS_WriteCompare1
+                                           ; SOURCE LINE # 90
+003F E4                CLR     A
+0040 FF                MOV     R7,A
+0041 120000      E     LCALL   _PWM_MOTORS_WriteCompare2
+                                           ; SOURCE LINE # 91
+0044 E4                CLR     A
+0045 FF                MOV     R7,A
+0046 120000      E     LCALL   _MOTOR_DIR_Write
+                                           ; SOURCE LINE # 92
+0049 E4                CLR     A
+004A FF                MOV     R7,A
+004B 120000      E     LCALL   _MOTOR_ON_OFF_Write
+                                           ; SOURCE LINE # 97
+004E 120000      E     LCALL   COUNTER_ENC_Start
+                                           ; SOURCE LINE # 98
+C51 COMPILER V9.51   MAIN                                                                  10/12/2016 16:01:22 PAGE 6   
+
+0051 120000      E     LCALL   SHIFTREG_ENC_1_Start
+                                           ; SOURCE LINE # 99
+0054 120000      E     LCALL   SHIFTREG_ENC_2_Start
+                                           ; SOURCE LINE # 104
+0057 120000      E     LCALL   ADC_Start
+                                           ; SOURCE LINE # 105
+005A 7F01              MOV     R7,#01H
+005C 120000      E     LCALL   _ADC_SOC_Write
+                                           ; SOURCE LINE # 108
+005F E4                CLR     A
+0060 900000      E     MOV     DPTR,#?_DMA_DmaInitialize?BYTE+04H
+0063 F0                MOVX    @DPTR,A
+0064 A3                INC     DPTR
+0065 F0                MOVX    @DPTR,A
+0066 FB                MOV     R3,A
+0067 FA                MOV     R2,A
+0068 7D01              MOV     R5,#01H
+006A 7F02              MOV     R7,#02H
+006C 120000      E     LCALL   _DMA_DmaInitialize
+006F 900000      R     MOV     DPTR,#DMA_Chan
+0072 EF                MOV     A,R7
+0073 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 109
+0074 120000      E     LCALL   CyDmaTdAllocate
+0077 900000      R     MOV     DPTR,#DMA_TD
+007A EF                MOV     A,R7
+007B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 110
+007C E0                MOVX    A,@DPTR
+007D FB                MOV     R3,A
+007E FF                MOV     R7,A
+007F 900000      E     MOV     DPTR,#?_CyDmaTdSetConfiguration?BYTE+04H
+0082 7486              MOV     A,#086H
+0084 F0                MOVX    @DPTR,A
+0085 7D0A              MOV     R5,#0AH
+0087 7C00              MOV     R4,#00H
+0089 120000      E     LCALL   _CyDmaTdSetConfiguration
+                                           ; SOURCE LINE # 111
+008C 7B01              MOV     R3,#01H
+008E 7A00        E     MOV     R2,#HIGH ADC_buf
+0090 7900        E     MOV     R1,#LOW ADC_buf
+0092 E9                MOV     A,R1
+0093 EA                MOV     A,R2
+0094 E4                CLR     A
+0095 AB01              MOV     R3,AR1
+0097 900000      R     MOV     DPTR,#DMA_TD
+009A E0                MOVX    A,@DPTR
+009B FF                MOV     R7,A
+009C 7D10              MOV     R5,#010H
+009E 7C4E              MOV     R4,#04EH
+00A0 120000      E     LCALL   _CyDmaTdSetAddress
+                                           ; SOURCE LINE # 112
+00A3 900000      R     MOV     DPTR,#DMA_Chan
+00A6 E0                MOVX    A,@DPTR
+00A7 FF                MOV     R7,A
+00A8 A3                INC     DPTR
+00A9 E0                MOVX    A,@DPTR
+00AA FD                MOV     R5,A
+00AB 120000      E     LCALL   _CyDmaChSetInitialTd
+                                           ; SOURCE LINE # 114
+00AE 900000      R     MOV     DPTR,#DMA_Chan
+00B1 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   MAIN                                                                  10/12/2016 16:01:22 PAGE 7   
+
+00B2 FF                MOV     R7,A
+00B3 7D01              MOV     R5,#01H
+00B5 120000      E     LCALL   _CyDmaChEnable
+                                           ; SOURCE LINE # 116
+00B8 E4                CLR     A
+00B9 FF                MOV     R7,A
+00BA 120000      E     LCALL   _RS485_CTS_Write
+                                           ; SOURCE LINE # 120
+00BD 120000      E     LCALL   MY_TIMER_Start
+                                           ; SOURCE LINE # 121
+00C0 120000      E     LCALL   PACER_TIMER_Start
+                                           ; SOURCE LINE # 123
+00C3 D2AF              SETB    EA
+00C5 9044F4            MOV     DPTR,#044F4H
+00C8 74FD              MOV     A,#0FDH
+00CA F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 127
+00CB E4                CLR     A
+00CC 7F0A              MOV     R7,#0AH
+00CE FE                MOV     R6,A
+00CF FD                MOV     R5,A
+00D0 FC                MOV     R4,A
+00D1 120000      E     LCALL   _?CyDelay
+                                           ; SOURCE LINE # 130
+;---- Variable 'i' assigned to Register 'R3' ----
+00D4 7B02              MOV     R3,#02H
+00D6         ?C0001:
+00D6 AF03              MOV     R7,AR3
+00D8 1B                DEC     R3
+00D9 EF                MOV     A,R7
+00DA 6018              JZ      ?C0002
+                                           ; SOURCE LINE # 131
+00DC E4                CLR     A
+00DD FF                MOV     R7,A
+00DE FE                MOV     R6,A
+00DF FD                MOV     R5,A
+00E0 FC                MOV     R4,A
+00E1 EB                MOV     A,R3
+00E2 25E0              ADD     A,ACC
+00E4 25E0              ADD     A,ACC
+00E6 2400        E     ADD     A,#LOW g_ref
+00E8 F582              MOV     DPL,A
+00EA E4                CLR     A
+00EB 3400        E     ADDC    A,#HIGH g_ref
+00ED F583              MOV     DPH,A
+00EF 120000      E     LCALL   ?C?LSTXDATA
+00F2 80E2              SJMP    ?C0001
+00F4         ?C0002:
+                                           ; SOURCE LINE # 134
+00F4 7B02              MOV     R3,#02H
+00F6         ?C0003:
+00F6 AF03              MOV     R7,AR3
+00F8 1B                DEC     R3
+00F9 EF                MOV     A,R7
+00FA 6024              JZ      ?C0004
+                                           ; SOURCE LINE # 135
+00FC E4                CLR     A
+00FD FF                MOV     R7,A
+00FE FE                MOV     R6,A
+00FF FD                MOV     R5,A
+0100 FC                MOV     R4,A
+0101 EB                MOV     A,R3
+C51 COMPILER V9.51   MAIN                                                                  10/12/2016 16:01:22 PAGE 8   
+
+0102 25E0              ADD     A,ACC
+0104 25E0              ADD     A,ACC
+0106 2400        E     ADD     A,#LOW g_meas
+0108 F582              MOV     DPL,A
+010A E4                CLR     A
+010B 3400        E     ADDC    A,#HIGH g_meas
+010D F583              MOV     DPH,A
+010F 120000      E     LCALL   ?C?LSTXDATA
+                                           ; SOURCE LINE # 136
+0112 7400        E     MOV     A,#LOW g_meas+0CH
+0114 2B                ADD     A,R3
+0115 F582              MOV     DPL,A
+0117 E4                CLR     A
+0118 3400        E     ADDC    A,#HIGH g_meas+0CH
+011A F583              MOV     DPH,A
+011C E4                CLR     A
+011D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 137
+011E 80D6              SJMP    ?C0003
+0120         ?C0004:
+                                           ; SOURCE LINE # 139
+0120 7800        E     MOV     R0,#LOW g_refNew
+0122 7C00        E     MOV     R4,#HIGH g_refNew
+0124 7D01              MOV     R5,#01H
+0126 7B01              MOV     R3,#01H
+0128 7A00        E     MOV     R2,#HIGH g_ref
+012A 7900        E     MOV     R1,#LOW g_ref
+012C 7E00              MOV     R6,#00H
+012E 7F09              MOV     R7,#09H
+0130 120000      E     LCALL   ?C?COPYAMD
+                                           ; SOURCE LINE # 141
+0133 900000      E     MOV     DPTR,#c_mem+010H
+0136 E0                MOVX    A,@DPTR
+0137 900000      E     MOV     DPTR,#g_ref+08H
+013A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 144
+013B E4                CLR     A
+013C 900000      E     MOV     DPTR,#g_rx+080H
+013F F0                MOVX    @DPTR,A
+0140 A3                INC     DPTR
+0141 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 145
+0142 900000      E     MOV     DPTR,#g_rx+084H
+0145 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 159
+0146 FF                MOV     R7,A
+0147 FE                MOV     R6,A
+0148 120000      E     LCALL   _memStore
+014B EF                MOV     A,R7
+014C 6007              JZ      ?C0005
+                                           ; SOURCE LINE # 160
+014E 7F01              MOV     R7,#01H
+0150 120000      E     LCALL   _sendAcknowledgment
+0153 8005              SJMP    ?C0006
+0155         ?C0005:
+                                           ; SOURCE LINE # 162
+0155 E4                CLR     A
+0156 FF                MOV     R7,A
+0157 120000      E     LCALL   _sendAcknowledgment
+015A         ?C0006:
+                                           ; SOURCE LINE # 164
+015A 900000      E     MOV     DPTR,#g_ref+08H
+C51 COMPILER V9.51   MAIN                                                                  10/12/2016 16:01:22 PAGE 9   
+
+015D E0                MOVX    A,@DPTR
+015E FF                MOV     R7,A
+015F 120000      E     LCALL   _MOTOR_ON_OFF_Write
+                                           ; SOURCE LINE # 166
+0162 E4                CLR     A
+0163 900000      E     MOV     DPTR,#dev_pwm_limit
+0166 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 167
+0167 C200        E     CLR     tension_valid
+                                           ; SOURCE LINE # 169
+0169 900000      E     MOV     DPTR,#calibration_flag
+016C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 170
+016D C200        E     CLR     reset_last_value_flag
+                                           ; SOURCE LINE # 174
+016F 900000      E     MOV     DPTR,#g_mem+037H
+0172 E0                MOVX    A,@DPTR
+0173 7007              JNZ     ?C0007
+                                           ; SOURCE LINE # 175
+0175 7F01              MOV     R7,#01H
+0177 120000      E     LCALL   _WATCHDOG_ENABLER_Write
+017A 8005              SJMP    ?C0009
+017C         ?C0007:
+                                           ; SOURCE LINE # 177
+017C E4                CLR     A
+017D FF                MOV     R7,A
+017E 120000      E     LCALL   _WATCHDOG_ENABLER_Write
+                                           ; SOURCE LINE # 181
+0181         ?C0009:
+                                           ; SOURCE LINE # 182
+                                           ; SOURCE LINE # 184
+0181 E4                CLR     A
+0182 FF                MOV     R7,A
+0183 120000      E     LCALL   _RESET_FF_Write
+                                           ; SOURCE LINE # 187
+0186 120000      E     LCALL   function_scheduler
+0189         ?C0011:
+                                           ; SOURCE LINE # 190
+0189 120000      E     LCALL   FF_STATUS_Read
+018C EF                MOV     A,R7
+018D 7020              JNZ     ?C0012
+                                           ; SOURCE LINE # 192
+018F 30000E            JNB     interrupt_flag,?C0013
+                                           ; SOURCE LINE # 194
+0192 7F01              MOV     R7,#01H
+0194 120000      E     LCALL   _WATCHDOG_REFRESH_Write
+                                           ; SOURCE LINE # 196
+0197 C200        E     CLR     interrupt_flag
+                                           ; SOURCE LINE # 197
+0199 C200        E     CLR     watchdog_flag
+                                           ; SOURCE LINE # 199
+019B 120000      E     LCALL   interrupt_manager
+                                           ; SOURCE LINE # 200
+019E 80E9              SJMP    ?C0011
+01A0         ?C0013:
+                                           ; SOURCE LINE # 202
+                                           ; SOURCE LINE # 203
+01A0 3000E6            JNB     watchdog_flag,?C0011
+                                           ; SOURCE LINE # 205
+01A3 7F01              MOV     R7,#01H
+01A5 120000      E     LCALL   _WATCHDOG_REFRESH_Write
+                                           ; SOURCE LINE # 207
+C51 COMPILER V9.51   MAIN                                                                  10/12/2016 16:01:22 PAGE 10  
+
+01A8 E4                CLR     A
+01A9 900000      E     MOV     DPTR,#g_refNew+08H
+01AC F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 208
+                                           ; SOURCE LINE # 209
+                                           ; SOURCE LINE # 210
+01AD 80DA              SJMP    ?C0011
+01AF         ?C0012:
+                                           ; SOURCE LINE # 213
+01AF 7F01              MOV     R7,#01H
+01B1 120000      E     LCALL   _RESET_FF_Write
+01B4         ?C0016:
+                                           ; SOURCE LINE # 216
+01B4 120000      E     LCALL   FF_STATUS_Read
+01B7 EF                MOV     A,R7
+01B8 6401              XRL     A,#01H
+01BA 60F8              JZ      ?C0016
+01BC         ?C0017:
+                                           ; SOURCE LINE # 218
+01BC 120000      E     LCALL   UART_RS485_ReadRxStatus
+01BF EF                MOV     A,R7
+01C0 30E7BE            JNB     ACC.7,?C0009
+                                           ; SOURCE LINE # 219
+01C3 120000      E     LCALL   UART_RS485_ClearRxBuffer
+                                           ; SOURCE LINE # 220
+01C6 80B9              SJMP    ?C0009
+                                           ; SOURCE LINE # 221
+                                           ; SOURCE LINE # 222
+01C8         ?C0019:
+01C8 22                RET     
+             ; FUNCTION main (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    457    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----       2
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

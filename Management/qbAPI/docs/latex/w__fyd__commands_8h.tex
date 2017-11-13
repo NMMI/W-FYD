@@ -1,0 +1,123 @@
+\section{w\+\_\+fyd\+\_\+commands.\+h File Reference}
+\label{w__fyd__commands_8h}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}
+
+
+Definitions for W-\/\+F\+YD commands, parameters and packages.  
+
+
+{\ttfamily \#include \char`\"{}commands.\+h\char`\"{}}\newline
+Include dependency graph for w\+\_\+fyd\+\_\+commands.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{w__fyd__commands_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{w__fyd__commands_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{w__fyd__commands_8h_ad97188edfdd667de971027b35330fa41}} 
+\#define {\bfseries A\+P\+I\+\_\+\+V\+E\+R\+S\+I\+ON}~\char`\"{}v6.\+1.\+0 mod. W-\/F\+YD\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{Indent}\textbf{ W-\/\+F\+YD Commands}\par
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ w\+\_\+fyd\+\_\+command} \{ \newline
+\textbf{ C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+IR} = 147, 
+\textbf{ C\+M\+D\+\_\+\+S\+E\+T\+\_\+\+S\+E\+R\+VO} = 148, 
+\textbf{ C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+S\+E\+R\+VO} = 149, 
+\textbf{ C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+F\+O\+R\+CE} = 150, 
+\newline
+\textbf{ C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+D\+U\+T\+Y\+\_\+\+C\+Y\+\_\+\+M\+AX} = 151
+ \}
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ W-\/\+F\+YD Parameters}\par
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ w\+\_\+fyd\+\_\+parameter} \{ \newline
+\textbf{ P\+A\+R\+A\+M\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+E\+N\+S\+I\+ON} = 27, 
+\textbf{ P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+M\+O\+D\+A\+L\+I\+TY} = 28, 
+\textbf{ P\+A\+R\+A\+M\+\_\+\+S\+U\+P\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND} = 29, 
+\textbf{ P\+A\+R\+A\+M\+\_\+\+I\+N\+F\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND} = 30, 
+\newline
+\textbf{ P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+F\+R\+EQ} = 31
+ \}
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Definitions for W-\/\+F\+YD commands, parameters and packages. 
+
+This file is included in the W-\/\+F\+YD firmware, in its libraries and applications. It contains all definitions that are necessary for the contruction of communication packages.
+
+It includes definitions for all of the device commands, parameters and also the size of answer packages. 
+
+\subsection{Enumeration Type Documentation}
+\mbox{\label{w__fyd__commands_8h_ab0fb85d9785c5cc36b9017f84022c56d}} 
+\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!w\+\_\+fyd\+\_\+command@{w\+\_\+fyd\+\_\+command}}
+\index{w\+\_\+fyd\+\_\+command@{w\+\_\+fyd\+\_\+command}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}
+\subsubsection{w\+\_\+fyd\+\_\+command}
+{\footnotesize\ttfamily enum \textbf{ w\+\_\+fyd\+\_\+command}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+IR@{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+IR}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+IR@{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+IR}}}\mbox{\label{w__fyd__commands_8h_ab0fb85d9785c5cc36b9017f84022c56da7777ab2f7931013bfbd9b87f18c9af5a}} 
+C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+IR&Command for asking ir readings (W-\/\+F\+YD) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+M\+D\+\_\+\+S\+E\+T\+\_\+\+S\+E\+R\+VO@{C\+M\+D\+\_\+\+S\+E\+T\+\_\+\+S\+E\+R\+VO}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!C\+M\+D\+\_\+\+S\+E\+T\+\_\+\+S\+E\+R\+VO@{C\+M\+D\+\_\+\+S\+E\+T\+\_\+\+S\+E\+R\+VO}}}\mbox{\label{w__fyd__commands_8h_ab0fb85d9785c5cc36b9017f84022c56da4b62947ee04d7c89f52ee16489a7d4cd}} 
+C\+M\+D\+\_\+\+S\+E\+T\+\_\+\+S\+E\+R\+VO&Command for setting servo position (W-\/\+F\+YD) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+S\+E\+R\+VO@{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+S\+E\+R\+VO}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+S\+E\+R\+VO@{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+S\+E\+R\+VO}}}\mbox{\label{w__fyd__commands_8h_ab0fb85d9785c5cc36b9017f84022c56daf9d2d1ec0c2a99ca63697b3f4479ad54}} 
+C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+S\+E\+R\+VO&Command for asking servo position (W-\/\+F\+YD) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+F\+O\+R\+CE@{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+F\+O\+R\+CE}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+F\+O\+R\+CE@{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+F\+O\+R\+CE}}}\mbox{\label{w__fyd__commands_8h_ab0fb85d9785c5cc36b9017f84022c56dae8ddd17d302bddd6e6e2a6e186d08aba}} 
+C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+F\+O\+R\+CE&Command for asking force measures (W-\/\+F\+YD) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+D\+U\+T\+Y\+\_\+\+C\+Y\+\_\+\+M\+AX@{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+D\+U\+T\+Y\+\_\+\+C\+Y\+\_\+\+M\+AX}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+D\+U\+T\+Y\+\_\+\+C\+Y\+\_\+\+M\+AX@{C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+D\+U\+T\+Y\+\_\+\+C\+Y\+\_\+\+M\+AX}}}\mbox{\label{w__fyd__commands_8h_ab0fb85d9785c5cc36b9017f84022c56da4609a5e28e724d6141584fd49b73d8a3}} 
+C\+M\+D\+\_\+\+G\+E\+T\+\_\+\+D\+U\+T\+Y\+\_\+\+C\+Y\+\_\+\+M\+AX&Command for setting the max dc (W-\/\+F\+YD) \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\label{w__fyd__commands_8h_ac7c41bc61aa20dd31eb5df46bb9a1674}} 
+\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!w\+\_\+fyd\+\_\+parameter@{w\+\_\+fyd\+\_\+parameter}}
+\index{w\+\_\+fyd\+\_\+parameter@{w\+\_\+fyd\+\_\+parameter}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}
+\subsubsection{w\+\_\+fyd\+\_\+parameter}
+{\footnotesize\ttfamily enum \textbf{ w\+\_\+fyd\+\_\+parameter}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+R\+A\+M\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+E\+N\+S\+I\+ON@{P\+A\+R\+A\+M\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+E\+N\+S\+I\+ON}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!P\+A\+R\+A\+M\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+E\+N\+S\+I\+ON@{P\+A\+R\+A\+M\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+E\+N\+S\+I\+ON}}}\mbox{\label{w__fyd__commands_8h_ac7c41bc61aa20dd31eb5df46bb9a1674aa19ed4f1cc75109644c9fd0da7dda0fd}} 
+P\+A\+R\+A\+M\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+E\+N\+S\+I\+ON&Device power tension. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+M\+O\+D\+A\+L\+I\+TY@{P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+M\+O\+D\+A\+L\+I\+TY}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+M\+O\+D\+A\+L\+I\+TY@{P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+M\+O\+D\+A\+L\+I\+TY}}}\mbox{\label{w__fyd__commands_8h_ac7c41bc61aa20dd31eb5df46bb9a1674a2d48d5979e11d11d2b811295d54fbd4b}} 
+P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+M\+O\+D\+A\+L\+I\+TY&Pulse modality byte (W-\/\+F\+YD) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+R\+A\+M\+\_\+\+S\+U\+P\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND@{P\+A\+R\+A\+M\+\_\+\+S\+U\+P\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!P\+A\+R\+A\+M\+\_\+\+S\+U\+P\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND@{P\+A\+R\+A\+M\+\_\+\+S\+U\+P\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND}}}\mbox{\label{w__fyd__commands_8h_ac7c41bc61aa20dd31eb5df46bb9a1674a446157551f6f4a7f7d7e08cabf64e1a7}} 
+P\+A\+R\+A\+M\+\_\+\+S\+U\+P\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND&Systolic pressure value setting (W-\/\+F\+YD) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+R\+A\+M\+\_\+\+I\+N\+F\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND@{P\+A\+R\+A\+M\+\_\+\+I\+N\+F\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!P\+A\+R\+A\+M\+\_\+\+I\+N\+F\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND@{P\+A\+R\+A\+M\+\_\+\+I\+N\+F\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND}}}\mbox{\label{w__fyd__commands_8h_ac7c41bc61aa20dd31eb5df46bb9a1674a6c55daf142df5d22c5c9c8cb38546a18}} 
+P\+A\+R\+A\+M\+\_\+\+I\+N\+F\+\_\+\+P\+R\+E\+S\+S\+U\+R\+E\+\_\+\+B\+O\+U\+ND&Diastolic pressure value setting (W-\/\+F\+YD) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+F\+R\+EQ@{P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+F\+R\+EQ}!w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}}\index{w\+\_\+fyd\+\_\+commands.\+h@{w\+\_\+fyd\+\_\+commands.\+h}!P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+F\+R\+EQ@{P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+F\+R\+EQ}}}\mbox{\label{w__fyd__commands_8h_ac7c41bc61aa20dd31eb5df46bb9a1674ae28e21f14522ad1852ebe8324c2290a3}} 
+P\+A\+R\+A\+M\+\_\+\+P\+U\+L\+S\+E\+\_\+\+F\+R\+EQ&Pulse frequency setting (W-\/\+F\+YD) \\
+\hline
+
+\end{DoxyEnumFields}

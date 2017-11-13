@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['param_5fcontrol_5fmode',['PARAM_CONTROL_MODE',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36aad84d584a61a3575db214d10d9bb6cb0',1,'commands.h']]],
+  ['param_5fcuff_5factivation_5fflag',['PARAM_CUFF_ACTIVATION_FLAG',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36accaa9632d78b1ce6bcc1751dc265f8d6',1,'commands.h']]],
+  ['param_5fcurr_5fdead_5fzone',['PARAM_CURR_DEAD_ZONE',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a5d2fe4ff6977a52931bbc26686ccb6fc',1,'commands.h']]],
+  ['param_5fcurr_5fprop_5fgain',['PARAM_CURR_PROP_GAIN',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a36bc5e8f9bbe727af2f12dfc107ca5cd',1,'commands.h']]],
+  ['param_5fcurr_5fsat',['PARAM_CURR_SAT',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36accdd38fb6e2c19b4ffc8c9b3ffca0785',1,'commands.h']]],
+  ['param_5fcurrent_5flimit',['PARAM_CURRENT_LIMIT',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a079999b78cd63f61764700fad99990de',1,'commands.h']]],
+  ['param_5fid',['PARAM_ID',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a172b8d344a5aaae4d87daa52e36e9e5f',1,'commands.h']]],
+  ['param_5finf_5fpressure_5fbound',['PARAM_INF_PRESSURE_BOUND',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a6c55daf142df5d22c5c9c8cb38546a18',1,'commands.h']]],
+  ['param_5finput_5fmode',['PARAM_INPUT_MODE',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a5c697f31b90e98e2eba960b79f2ed25c',1,'commands.h']]],
+  ['param_5fmax_5fstep_5fneg',['PARAM_MAX_STEP_NEG',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a5f7c88ebecbc39113c0621701cfedd07',1,'commands.h']]],
+  ['param_5fmax_5fstep_5fpos',['PARAM_MAX_STEP_POS',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a9e5ffa64ed5e03da3fa0cc5f1b1cd2ae',1,'commands.h']]],
+  ['param_5fmeasurement_5fmultiplier',['PARAM_MEASUREMENT_MULTIPLIER',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a547d8f3a487a08ba25a87e5a1c4035a3',1,'commands.h']]],
+  ['param_5fmeasurement_5foffset',['PARAM_MEASUREMENT_OFFSET',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36adcdce0ed2b6b62335e8986a1758819d5',1,'commands.h']]],
+  ['param_5fpid_5fcontrol',['PARAM_PID_CONTROL',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a878e85d61c0bca0141e6118d1ceba299',1,'commands.h']]],
+  ['param_5fpid_5fcurr_5fcontrol',['PARAM_PID_CURR_CONTROL',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36afd84a8c2eb30f2984412ddaddd66ac7f',1,'commands.h']]],
+  ['param_5fpos_5flimit',['PARAM_POS_LIMIT',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a02e68c657a942155b8bd2b037b755011',1,'commands.h']]],
+  ['param_5fpos_5flimit_5fflag',['PARAM_POS_LIMIT_FLAG',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36ae1ba46d5587fe44580417535c0ccf4fc',1,'commands.h']]],
+  ['param_5fpos_5fresolution',['PARAM_POS_RESOLUTION',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a6857aadbe11091d0d3cebe2c22da1eba',1,'commands.h']]],
+  ['param_5fpower_5ftension',['PARAM_POWER_TENSION',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36aa19ed4f1cc75109644c9fd0da7dda0fd',1,'commands.h']]],
+  ['param_5fpulse_5ffreq',['PARAM_PULSE_FREQ',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36ae28e21f14522ad1852ebe8324c2290a3',1,'commands.h']]],
+  ['param_5fpulse_5fmodality',['PARAM_PULSE_MODALITY',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a2d48d5979e11d11d2b811295d54fbd4b',1,'commands.h']]],
+  ['param_5fstartup_5factivation',['PARAM_STARTUP_ACTIVATION',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a9f7e2f9c7b92726e1ffd5dda3af47fd8',1,'commands.h']]],
+  ['param_5fsup_5fpressure_5fbound',['PARAM_SUP_PRESSURE_BOUND',['../commands_8h.html#a0f1ee428e49fc602d6fde71d7ff80f36a446157551f6f4a7f7d7e08cabf64e1a7',1,'commands.h']]]
+];

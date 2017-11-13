@@ -1,0 +1,59 @@
+\section{w\+\_\+fyd\+\_\+communications.\+h File Reference}
+\label{w__fyd__communications_8h}\index{w\+\_\+fyd\+\_\+communications.\+h@{w\+\_\+fyd\+\_\+communications.\+h}}
+
+
+Library of functions for S\+E\+R\+I\+AL P\+O\+RT communication with W\+F\+YD. Function Prototypes.  
+
+
+{\ttfamily \#include \char`\"{}qbmove\+\_\+communications.\+h\char`\"{}}\newline
+Include dependency graph for w\+\_\+fyd\+\_\+communications.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{w__fyd__communications_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{w__fyd__communications_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{w__fyd__communications_8h_a9e9e8a0bb8644a0de99085f33faa1ac9}} 
+int {\bfseries comm\+Get\+IR} (\textbf{ comm\+\_\+settings} $\ast$comm\+\_\+settings\+\_\+t, int id, short int measurements[1])
+\item 
+\mbox{\label{w__fyd__communications_8h_a10d1a5e2641255a2bcf56d5fb60bdfda}} 
+void {\bfseries comm\+Set\+Servo} (\textbf{ comm\+\_\+settings} $\ast$comm\+\_\+settings\+\_\+t, int id, short int inputs[1])
+\item 
+\mbox{\label{w__fyd__communications_8h_ac07d3498ca20b672831a597a0ac63369}} 
+int {\bfseries comm\+Get\+Servo} (\textbf{ comm\+\_\+settings} $\ast$comm\+\_\+settings\+\_\+t, int id, short int measurements[1])
+\item 
+\mbox{\label{w__fyd__communications_8h_a02a9df4bac7885c5f10c70617df705a8}} 
+int {\bfseries comm\+Get\+Force} (\textbf{ comm\+\_\+settings} $\ast$comm\+\_\+settings\+\_\+t, int id, short int measurements[1])
+\item 
+\mbox{\label{w__fyd__communications_8h_a3fc8bc2506b1e918938d08c3539813d1}} 
+int {\bfseries comm\+Get\+D\+CyM} (\textbf{ comm\+\_\+settings} $\ast$comm\+\_\+settings\+\_\+t, int id, short int measurements[1])
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Library of functions for S\+E\+R\+I\+AL P\+O\+RT communication with W\+F\+YD. Function Prototypes. 
+
+\begin{DoxyDate}{Date}
+October 01, 2017 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+{\itshape Centro \char`\"{}\+E.\+Piaggio\char`\"{}} 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+(C) 2012-\/2016 qbrobotics. All rights reserved. 
+
+(C) 2017 Centro \char`\"{}\+E.\+Piaggio\char`\"{}. All rights reserved.
+\end{DoxyCopyright}
+This library contains all necessary functions for communicating with W\+F\+YD when using a U\+SB to R\+S485 connector that provides a Virtual C\+OM interface. 

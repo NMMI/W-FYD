@@ -1,0 +1,49 @@
+\contentsline {chapter}{\numberline {1}Firmware}{1}
+\contentsline {chapter}{\numberline {2}Data Structure Index}{3}
+\contentsline {section}{\numberline {2.1}Data Structures}{3}
+\contentsline {chapter}{\numberline {3}File Index}{5}
+\contentsline {section}{\numberline {3.1}File List}{5}
+\contentsline {chapter}{\numberline {4}Data Structure Documentation}{7}
+\contentsline {section}{\numberline {4.1}st\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}data Struct Reference}{7}
+\contentsline {section}{\numberline {4.2}st\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}meas Struct Reference}{7}
+\contentsline {section}{\numberline {4.3}st\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}mem Struct Reference}{8}
+\contentsline {section}{\numberline {4.4}st\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ref Struct Reference}{8}
+\contentsline {chapter}{\numberline {5}File Documentation}{9}
+\contentsline {section}{\numberline {5.1}command\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}processing.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c File Reference}{9}
+\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{10}
+\contentsline {subsection}{\numberline {5.1.2}Function Documentation}{11}
+\contentsline {subsubsection}{\numberline {5.1.2.1}cmd\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}measurements()}{11}
+\contentsline {subsubsection}{\numberline {5.1.2.2}mem\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Init()}{11}
+\contentsline {subsubsection}{\numberline {5.1.2.3}mem\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Recall()}{11}
+\contentsline {subsubsection}{\numberline {5.1.2.4}mem\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Restore()}{11}
+\contentsline {subsubsection}{\numberline {5.1.2.5}mem\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Store()}{11}
+\contentsline {section}{\numberline {5.2}command\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}processing.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h File Reference}{12}
+\contentsline {subsection}{\numberline {5.2.1}Detailed Description}{13}
+\contentsline {subsection}{\numberline {5.2.2}Function Documentation}{13}
+\contentsline {subsubsection}{\numberline {5.2.2.1}cmd\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}measurements()}{13}
+\contentsline {subsubsection}{\numberline {5.2.2.2}mem\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Init()}{14}
+\contentsline {subsubsection}{\numberline {5.2.2.3}mem\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Recall()}{14}
+\contentsline {subsubsection}{\numberline {5.2.2.4}mem\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Restore()}{14}
+\contentsline {subsubsection}{\numberline {5.2.2.5}mem\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Store()}{14}
+\contentsline {section}{\numberline {5.3}commands.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h File Reference}{14}
+\contentsline {subsection}{\numberline {5.3.1}Detailed Description}{16}
+\contentsline {subsection}{\numberline {5.3.2}Enumeration Type Documentation}{16}
+\contentsline {subsubsection}{\numberline {5.3.2.1}qbmove\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}command}{16}
+\contentsline {subsubsection}{\numberline {5.3.2.2}qbmove\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}control\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}mode}{17}
+\contentsline {subsubsection}{\numberline {5.3.2.3}qbmove\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}input\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}mode}{17}
+\contentsline {subsubsection}{\numberline {5.3.2.4}qbmove\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}parameter}{18}
+\contentsline {section}{\numberline {5.4}globals.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c File Reference}{18}
+\contentsline {subsection}{\numberline {5.4.1}Detailed Description}{19}
+\contentsline {section}{\numberline {5.5}globals.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h File Reference}{20}
+\contentsline {subsection}{\numberline {5.5.1}Detailed Description}{22}
+\contentsline {section}{\numberline {5.6}interruptions.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c File Reference}{22}
+\contentsline {subsection}{\numberline {5.6.1}Detailed Description}{24}
+\contentsline {subsection}{\numberline {5.6.2}Variable Documentation}{24}
+\contentsline {subsubsection}{\numberline {5.6.2.1}pwm\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}preload\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}values}{24}
+\contentsline {section}{\numberline {5.7}interruptions.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h File Reference}{25}
+\contentsline {subsection}{\numberline {5.7.1}Detailed Description}{26}
+\contentsline {section}{\numberline {5.8}main.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c File Reference}{26}
+\contentsline {subsection}{\numberline {5.8.1}Detailed Description}{27}
+\contentsline {section}{\numberline {5.9}utils.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h File Reference}{28}
+\contentsline {subsection}{\numberline {5.9.1}Detailed Description}{29}
+\contentsline {chapter}{Index}{31}

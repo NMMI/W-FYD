@@ -1,0 +1,59 @@
+\begin{theindex}
+
+  \item {baudrate\+\_\+reader}
+    \subitem {qbadmin.\+c}, 12
+    \subitem {qbparam.\+c}, 15
+
+  \indexspace
+
+  \item {definitions.\+h}, 9
+  \item {display\+\_\+usage}
+    \subitem {qbadmin.\+c}, 12
+
+  \indexspace
+
+  \item {file\+\_\+parser}
+    \subitem {qbadmin.\+c}, 12
+
+  \indexspace
+
+  \item {global\+\_\+args}, 7
+
+  \indexspace
+
+  \item {int\+\_\+handler}
+    \subitem {qbadmin.\+c}, 13
+  \item {int\+\_\+handler\+\_\+2}
+    \subitem {qbadmin.\+c}, 13
+  \item {int\+\_\+handler\+\_\+3}
+    \subitem {qbadmin.\+c}, 13
+
+  \indexspace
+
+  \item {long\+Opts}
+    \subitem {qbadmin.\+c}, 13
+
+  \indexspace
+
+  \item {main}
+    \subitem {qbadmin.\+c}, 13
+
+  \indexspace
+
+  \item {position}, 8
+
+  \indexspace
+
+  \item {qbadmin.\+c}, 11
+    \subitem {baudrate\+\_\+reader}, 12
+    \subitem {display\+\_\+usage}, 12
+    \subitem {file\+\_\+parser}, 12
+    \subitem {int\+\_\+handler}, 13
+    \subitem {int\+\_\+handler\+\_\+2}, 13
+    \subitem {int\+\_\+handler\+\_\+3}, 13
+    \subitem {long\+Opts}, 13
+    \subitem {main}, 13
+  \item {qbparam.\+c}, 14
+    \subitem {baudrate\+\_\+reader}, 15
+
+\end{theindex}
